@@ -1,9 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import {  Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AlertController } from '@ionic/angular';
-
-import { UserData } from '../../providers/user-data';
+import { ActionSheetController } from '@ionic/angular';
 
 
 @Component({
@@ -11,67 +8,90 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'account.html',
   styleUrls: ['./account.scss'],
 })
-export class AccountPage implements AfterViewInit {
+export class AccountPage  {
   username: string;
 
   constructor(
-    public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController,
     public router: Router,
-    public userData: UserData
+   
   ) { }
 
-  ngAfterViewInit() {
-    this.getUsername();
-  }
+    reports:Array<any> = [
+      {
+        img:'/assets/IMAP-images/police-car.svg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+      {
+        img:'/assets/img/speakers/bear.jpg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+      {
+        img:'/assets/img/speakers/cheetah.jpg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+      {
+        img:'/assets/img/speakers/lion.jpg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+      {
+        img:'/assets/img/speakers/eagle.jpg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+      {
+        img:'/assets/img/speakers/giraffe.jpg',
+        title: 'Report Title',
+        date: '03,Oct, 2022',
+        desc: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that.'
+      },
+    ]
 
-  updatePicture() {
-    console.log('Clicked to update picture');
-  }
 
-  // Present an alert with the current username populated
-  // clicking OK will update the username and display it
-  // clicking Cancel will close the alert and do nothing
-  async changeUsername() {
-    const alert = await this.alertCtrl.create({
-      header: 'Change Username',
-      buttons: [
-        'Cancel',
-        {
-          text: 'Ok',
-          handler: (data: any) => {
-            this.userData.setUsername(data.username);
-            this.getUsername();
+
+
+
+
+
+
+
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      
+        buttons: [
+          {
+            text: 'Contact us',
+            role: 'destructive',
+            icon: 'home',
+            handler: () => {
+              console.log('Destructive clicked');
+            }
+          },{
+            text: 'Terms & Conditions',
+            icon: 'home',
+            handler: () => {
+              console.log('Archive clicked');
+            }
+          },{
+            text: 'Logout',
+            icon: 'home',
+            handler: () => {
+              this.router.navigate(['/login'])
+            }
           }
-        }
-      ],
-      inputs: [
-        {
-          type: 'text',
-          name: 'username',
-          value: this.username,
-          placeholder: 'username'
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  getUsername() {
-    this.userData.getUsername().then((username) => {
-      this.username = username;
-    });
-  }
-
-  changePassword() {
-    console.log('Clicked to change password');
-  }
-
-  logout() {
-    this.userData.logout();
-    this.router.navigateByUrl('/login');
-  }
-
-  support() {
-    this.router.navigateByUrl('/support');
-  }
+        ]
+      });
+     await actionSheet.present();
+    }
+   
 }

@@ -41,3 +41,101 @@
 .swiper-slide {
   display: block;
 }
+
+.action-sheet-group.sc-ion-action-sheet-md  {
+  border-top-left-radius: 30px!important;
+  border-top-right-radius: 30px!important;
+
+}
+
+.alert-button-group.sc-ion-alert-md {
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.action-sheet-icon.sc-ion-action-sheet-md {
+  margin-right:10px!important;
+}
+
+
+.alert-button.ion-focusable.ion-activatable.alert-button-role-cancel.sc-ion-alert-md {
+  width: 97px;
+  height: 39px;
+ text-align: center;
+  background: #FFFFFF;
+  border: 1px solid #777777;
+  border-radius: 4px;
+}
+
+.alert-button.ion-focusable.ion-activatable.alert-button-role-agree.sc-ion-alert-md {
+  width: 122px;
+height: 39px;
+background: #309CFF;
+border-radius: 4px;
+color:#fff;
+}
+
+.alert-button-inner.sc-ion-alert-md {
+  justify-content: center;
+}
+
+// .alert-head.sc-ion-alert-md {
+//   background:url(/assets/IMAP-images/police-light.svg) center/30% no-repeat;
+//   min-height:5rem;
+// }
+
+.alert-message.sc-ion-alert-md {
+  text-align:center;
+}
+
+.menu {
+  width: 38px;
+height: 28px;
+color: #309CFF;
+}
+
+.input-wrapper {
+  display: flex!important;
+  justify-content: center!important;
+}
+
+.native-input.sc-ion-input-md,
+.native-textarea.sc-ion-textarea-md {
+  padding-left:10px!important;
+}
+
+.dark-theme.ios {
+  --ion-background-color: #000000;
+  --ion-background-color-rgb: 0,0,0;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-color-step-50: #0d0d0d;
+  --ion-color-step-100: #1a1a1a;
+  --ion-color-step-150: #262626;
+  --ion-color-step-200: #333333;
+  --ion-color-step-250: #404040;
+  --ion-color-step-300: #4d4d4d;
+  --ion-color-step-350: #595959;
+  --ion-color-step-400: #666666;
+  --ion-color-step-450: #737373;
+  --ion-color-step-500: #808080;
+  --ion-color-step-550: #8c8c8c;
+  --ion-color-step-600: #999999;
+  --ion-color-step-650: #a6a6a6;
+  --ion-color-step-700: #b3b3b3;
+  --ion-color-step-750: #bfbfbf;
+  --ion-color-step-800: #cccccc;
+  --ion-color-step-850: #d9d9d9;
+  --ion-color-step-900: #e6e6e6;
+  --ion-color-step-950: #f2f2f2;
+
+  --ion-toolbar-background: #0d0d0d;
+
+  --ion-item-background: #000000;
+}
+.about-info {
+  width:100%!important;
+}

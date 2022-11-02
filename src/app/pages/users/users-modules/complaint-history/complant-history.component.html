@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>
+        Complaint History
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="presentActionSheet()">
+          <ion-icon slot="icon-only" ios="menu" md="menu" class="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+    <!-- <ion-card  *ngFor="let report of datas" >
+      <ion-card-content routerLink="/users/apps/complaint-detail/{{report.id}}">
+        <ion-list lines="none">
+          <ion-item>
+       
+           <div>
+            <h2>{{report.title}}</h2>
+            
+            <p>{{report?.location}}</p>
+           </div>
+            <ion-label slot="end" >{{report.dateCreated}}</ion-label>
+          </ion-item>
+        </ion-list>
+
+       
+      </ion-card-content>
+    </ion-card> -->
+    <ion-card   *ngFor="let report of datas">
+      <ion-card-content routerLink="/users/apps/complaint-detail/{{report.id}}">
+        <ion-list lines="none">
+          <ion-item>
+       
+           <div>
+            <h2>{{report.title}}</h2>
+            
+            <p>{{report.location}}</p>
+           </div>
+            <ion-label slot="end" >{{report.dateCreated}}</ion-label>
+          </ion-item>
+        </ion-list>
+
+       
+      </ion-card-content>
+    </ion-card>
+  
+  
+  
+  </ion-content>
+  
+  
+  
+  

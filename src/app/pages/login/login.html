@@ -1,54 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
 
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
-  <div class="login-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic logo">
+  <div class="title">
+    <img src="assets/IMAP-images/logo.svg" class="login-image" />
+    
   </div>
-
-  <form #loginForm="ngForm" novalidate>
+      <p class="head-title"> Login your Account</p>
+      
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <ion-list>
-      <ion-item>
+      <ion-item class="input">
         <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-          required>
+        <ion-input formControlName="username" type="text" >
         </ion-input>
       </ion-item>
 
       <ion-text color="danger">
-        <p [hidden]="username.valid || submitted === false" class="ion-padding-start">
-          Username is required
+        <p  class="error" *ngIf="isFieldValid('username')">
+          Field is required
         </p>
       </ion-text>
 
-      <ion-item>
+      <ion-item class="input">
         <ion-label position="stacked" color="primary">Password</ion-label>
-        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        <ion-input formControlName="password" type="password" >
         </ion-input>
       </ion-item>
 
       <ion-text color="danger">
-        <p [hidden]="password.valid || submitted === false" class="ion-padding-start">
+        <p  class="error" *ngIf="isFieldValid('password')">
           Password is required
         </p>
       </ion-text>
     </ion-list>
-
+    <ion-item  class="forgot">
+      <div class="arange">
+        <ion-checkbox ></ion-checkbox>
+        <ion-label>Remember Me</ion-label>
+        </div>
+         <ion-label slot="end">Forgot Password?</ion-label>
+      
+      </ion-item>
+      <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+        <ion-button  type="submit" expand="block" shape="round">LOGIN</ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col class="account" style="text-align:center;">
+        Don’t have an account? <a routerLink="/signup">Create Account</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   </form>
 
 </ion-content>
+
+
+
+  

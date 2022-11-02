@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserData } from '../../providers/user-data';
+import { FormBuilder, Validators } from '@angular/forms';
 
-import { UserOptions } from '../../interfaces/user-options';
 
 
 
@@ -14,24 +13,52 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./login.scss'],
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
+  
   submitted = false;
-
+  loginForm:FormGroup;
   constructor(
-    public userData: UserData,
-    public router: Router
-  ) { }
+    
+    public router: Router,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password:  ['', Validators.required]
+    })
 
-  onLogin(form: NgForm) {
+   }
+
+  onLogin() {
     this.submitted = true;
+   if(this.loginForm.valid) {
+    if(this.loginForm.get('username').value ==='user' && this.loginForm.get('password').value ==="user") {
+      console.log(this.loginForm.value);
+      this.router.navigate(['/users'])
+      this.loginForm.reset()
+      
+    }else if(this.loginForm.get('username').value ==='admin' && this.loginForm.get('password').value ==="admin") {
+      console.log(this.loginForm.value);
+      this.router.navigate(['/admin'])
+      this.loginForm.reset()
+      
+    }else if(this.loginForm.get('username').value ==='staff' && this.loginForm.get('password').value ==="staff") {
+      console.log(this.loginForm.value);
+      this.router.navigate(['/staff'])
+      this.loginForm.reset()
+      
+    }
+ 
+   }
+    }
 
-    if (form.valid) {
-      this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+    isFieldValid(field: string) {
+      return(
+        this.loginForm.get(field).invalid && (this.loginForm.get(field).dirty || this.loginForm.get(field).touched)
+      )
     }
   }
 
-  onSignup() {
-    this.router.navigateByUrl('/signup');
-  }
-}
+
+
+
+

@@ -1,0 +1,16 @@
+
+.pending {
+    background:rgb(247, 10, 10);
+    color:#fff;
+    padding:4px 5px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.closed {
+    background:rgb(8, 182, 2);
+    color:#fff;
+    padding:4px 5px;
+    border-radius:10px;
+    font-size:14px;
+}

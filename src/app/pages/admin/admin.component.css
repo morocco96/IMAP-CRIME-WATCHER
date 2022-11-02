@@ -1,0 +1,3 @@
+ion-menu.md ion-list:not(:last-of-type){
+    padding-top:0;
+}

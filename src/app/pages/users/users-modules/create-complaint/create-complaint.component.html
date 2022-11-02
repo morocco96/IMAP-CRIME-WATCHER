@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>
+       Report a Problem
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="presentActionSheet()">
+          <ion-icon slot="icon-only" ios="menu" md="menu" class="menu" style="color:#fff;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form  [formGroup]="reportForm" (ngSubmit)="createReport()">
+      <ion-list>
+        <ion-item class="input">
+         
+          <ion-input type="text" placeholder="Title" formControlName="title">
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('title')">
+            Title is required
+          </p>
+        </ion-text>
+       
+
+        <ion-item class="input">
+         
+            <ion-input type="date" placeholder="Date" >
+            </ion-input>
+          </ion-item>
+         
+
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('dateCreated')">
+            Date is required
+          </p>
+        </ion-text>
+
+        <!-- <ion-item class="input">
+         
+            <ion-input type="text" placeholder="Complaint Type" >
+            </ion-input>
+          </ion-item> -->
+          <ion-item>
+            <ion-select placeholder="Complaint Type" formControlName="complaintType">
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value="kid">Kidnapping</ion-select-option>
+              <ion-select-option value="police">Police Crime</ion-select-option>
+              <ion-select-option value="police">Police Crime</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('complaintType')">
+            Complaint Type is required
+          </p>
+        </ion-text>
+
+
+        <ion-item class="input">
+          <ion-textarea placeholder="What is this report all about? provide a brief details " 
+          formControlName="complaintDetail"></ion-textarea>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('complaintDetail')">
+            Complaint Detail is required
+          </p>
+        </ion-text>
+  
+        <ion-item class="input" style="padding-top:1rem;">
+      
+          <ion-input  type="text"  placeholder="Select Loaction" formControlName="location">
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('location')">
+            Location is required
+          </p>
+        </ion-text>
+  
+        <ion-item>
+          <ion-icon name="home" slot="start"></ion-icon>
+          Report anonymous
+          <!-- <ion-icon name="home" slot="end"></ion-icon> -->
+        </ion-item>
+  
+        <ion-item class="input">
+      
+          <ion-input  type="text"  placeholder="Crime Status" formControlName="status">
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('status')">
+            Crime Status is required
+          </p>
+        </ion-text>
+  
+  
+  
+      </ion-list>
+  
+      <ion-row>
+        <ion-col class="innput">
+          <ion-button  type="submit" expand="block"shape="round" class="btn-blue" >Send Report</ion-button>
+        </ion-col>
+      </ion-row>
+     
+    </form>
+  
+  </ion-content>
+  
+  
+  
+  

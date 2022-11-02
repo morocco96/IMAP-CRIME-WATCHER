@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserData } from '../../providers/user-data';
 
-import { UserOptions } from '../../interfaces/user-options';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 
 
@@ -14,20 +14,31 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./signup.scss'],
 })
 export class SignupPage {
-  signup: UserOptions = { username: '', password: '' };
-  submitted = false;
 
+  submitted = false;
+  signupForm: FormGroup;
   constructor(
     public router: Router,
-    public userData: UserData
-  ) {}
-
-  onSignup(form: NgForm) {
-    this.submitted = true;
-
-    if (form.valid) {
-      this.userData.signup(this.signup.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
-    }
+    private fb: FormBuilder
+  ) {
+    this.signupForm = this.fb.group({
+      fullName: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
+
+
+create() {
+  if(this.signupForm.valid) {
+    console.log(this.signupForm.value)
+  }
+}
+
+isFieldValid(field: string) {
+  return(
+    this.signupForm.get(field).invalid && (this.signupForm.get(field).dirty || this.signupForm.get(field).touched)
+  )
+}
 }

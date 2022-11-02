@@ -1,0 +1,67 @@
+.title {
+    padding: 20px 10px 0;
+    margin-bottom:2rem;
+    text-align: center;
+  }
+  
+  .head-title {
+    text-align:center;
+  
+  }
+  
+  .login-logo img {
+    max-width: 150px;
+  }
+  
+  .list {
+    margin-bottom: 0;
+  }
+  
+  .arange {
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  ion-label {
+    color:#818181!important
+  }
+  
+  ion-input {
+    border: 1px solid #818181;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  }
+  
+  ion-item {
+    border-bottom:none;
+    --border-style: none;
+    --border-width:none;
+  }
+  
+  .account {
+    
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #303030;
+  }
+  
+  .forgot {
+    font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px!important;
+  line-height: 19px;
+  
+  color: #303030;
+  }
+  
+  ion-text .error {
+    padding-left:1.2rem;
+    font-size: 0.74rem;
+  }

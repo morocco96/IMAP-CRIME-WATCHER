@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Dashboard
+      </ion-title>
+      <!-- <ion-buttons slot="end">
+        <ion-button (click)="presentActionSheet()" >
+          <ion-icon slot="icon-only" ios="menu" md="menu" class="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <!-- <div class="header-title">
+    <h2 class="top-title">Hello,<br>
+      Snoop Tiger</h2>
+      <p class="text">See something, say something</p>
+    </div> -->
+  
+  <div class="title">
+    <img   src="/assets/IMAP-images/police-car.svg" alt="">
+    
+  </div>
+  
+  
+  
+  
+  <div >
+   <div style="text-align:center;">
+    <p class="text">What do you want to do today?</p>
+  </div>
+     <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button  type="submit" expand="block" shape="round" class="btn-blue" (click)="goTo()">Report a Problem</ion-button>
+   
+   
+          <ion-button  type="submit" expand="block" shape="round" class="btn-red" (click)="showConfirm()">
+            <ion-icon name="phone"></ion-icon>Police Emergency Call</ion-button>
+        </ion-col>
+      </ion-row>
+     </ion-grid>
+    
+  </div>
+  <ion-grid>
+   
+    <ion-row>
+        <ion-col>
+            <a>
+                <ion-card routerLink="/users/apps/complaint-history">
+                    <ion-icon name="book"></ion-icon>
+                    <p>0 <br> Complaints</p>
+                </ion-card>
+            </a>
+        </ion-col>
+        <ion-col>
+          <a>
+            <ion-card routerLink="/users/apps/pending">
+                <ion-icon name="home"></ion-icon>
+                <p>2 Pending Complaints</p>
+            </ion-card>
+        </a>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <a>
+            <ion-card>
+                <ion-icon name="home"></ion-icon>
+                <p>1 Closed Complaints</p>
+            </ion-card>
+        </a>
+        </ion-col>
+        <ion-col>
+           
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+  </ion-content>
+  
+  
+  
+  
