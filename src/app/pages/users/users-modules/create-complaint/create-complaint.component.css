@@ -86,7 +86,7 @@
   
   ion-textarea {
     
-  padding: 6px 13px 48px;
+  padding: 6px 11px 48px;
   width: 348px;
   height: 92px;
   border: 1px solid #818181;
@@ -106,4 +106,31 @@
   
     --max-width: 90%;
     --width: 336px;
+  }
+
+  .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md  {
+       background:url(/assets/IMAP-images/police-light.svg) center/30% no-repeat;
+       min-height:5rem;
+       color:green!important;
+    }
+    div#alert-2-msg.alert-message.sc-ion-alert-md {
+         color:green!important;
+    }
+
+  .picture {
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    padding:20px;
+    font-size:2rem;
+  }
+
+  .camera {
+    width:95%; 
+    margin:auto; 
+    text-align:center
+  }
+  .camera img {
+    cursor:pointer;
+    width:140px;
   }

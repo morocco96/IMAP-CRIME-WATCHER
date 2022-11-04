@@ -4,16 +4,25 @@ import { CommonModule } from '@angular/common';
 import { PendingComplaintDetailRoutingModule } from './pending-complaint-detail-routing.module';
 import { PendingComplaintDetailComponent } from './pending-complaint-detail.component';
 import { IonicModule } from '@ionic/angular';
+import { SharedModule} from '../../../shared';
+
+
+
 
 
 @NgModule({
   declarations: [
-    PendingComplaintDetailComponent
+    PendingComplaintDetailComponent ,
+   
+ 
   ],
   imports: [
     CommonModule,
     PendingComplaintDetailRoutingModule,
-    IonicModule
+    IonicModule,
+    SharedModule
+   
+   
   ]
 })
 export class PendingComplaintDetailModule { }

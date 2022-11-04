@@ -8,36 +8,37 @@
       </ion-title>
       <ion-buttons slot="end">
         <ion-button  >
-          <ion-icon  name="person"></ion-icon>
+          <!-- <ion-icon  name="person"></ion-icon> -->
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
-    <ion-grid>
+  <ion-content> 
+      <img src="/assets/IMAP-images/law3.jpg" alt="">
+    <!-- <ion-grid>
         <ion-row>
             <ion-col>
                 
-                  <img src="/assets/img/about/madison.jpg" alt="">
+                 
             </ion-col>  
             </ion-row>
-    </ion-grid>
+    </ion-grid> -->
 
   <ion-grid>
     <ion-row>
         <ion-col>
             <a>
-                <ion-card>
-                    <ion-icon name="book"></ion-icon>
+                <ion-card routerLink="/admin/apps/pending-complaint">
+                    <ion-icon name="server-outline"></ion-icon>
                     <p>0 <br> Complaints</p>
                 </ion-card>
             </a>
         </ion-col>
         <ion-col>
             <a>
-                <ion-card>
-                    <ion-icon name="map"></ion-icon>
+                <ion-card routerLink="/admin/apps/pending-complaint">
+                    <ion-icon name="ribbon-outline"></ion-icon>
                     <p>1 New Complaint</p>
                 </ion-card>
             </a>
@@ -46,16 +47,16 @@
     <ion-row>
         <ion-col>
             <a>
-                <ion-card>
-                    <ion-icon name="home"></ion-icon>
+                <ion-card routerLink="/admin/apps/pending-complaint">
+                    <ion-icon name="speedometer-outline"></ion-icon>
                     <p>2 Pending Complaints</p>
                 </ion-card>
             </a>
         </ion-col>
         <ion-col>
             <a>
-                <ion-card>
-                    <ion-icon name="home"></ion-icon>
+                <ion-card routerLink="/admin/apps/closed-complaint">
+                    <ion-icon name="radio-outline"></ion-icon>
                     <p>1 Closed Complaints</p>
                 </ion-card>
             </a>

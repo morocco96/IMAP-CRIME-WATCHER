@@ -1,0 +1,12 @@
+.status {
+    background:green;
+    color:#fff;
+    border-radius:20px;
+    padding:10px;
+}
+
+.avatar {
+    display:flex;
+    justify-content: center;
+    text-align:center;
+}

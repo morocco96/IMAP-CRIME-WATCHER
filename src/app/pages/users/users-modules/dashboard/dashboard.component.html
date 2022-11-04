@@ -6,20 +6,16 @@
       <ion-title>
         Dashboard
       </ion-title>
-      <!-- <ion-buttons slot="end">
+      <ion-buttons slot="end">
         <ion-button (click)="presentActionSheet()" >
-          <ion-icon slot="icon-only" ios="menu" md="menu" class="menu"></ion-icon>
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
         </ion-button>
-      </ion-buttons> -->
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
   <ion-content>
-  <!-- <div class="header-title">
-    <h2 class="top-title">Hello,<br>
-      Snoop Tiger</h2>
-      <p class="text">See something, say something</p>
-    </div> -->
+
   
   <div class="title">
     <img   src="/assets/IMAP-images/police-car.svg" alt="">
@@ -52,7 +48,7 @@
         <ion-col>
             <a>
                 <ion-card routerLink="/users/apps/complaint-history">
-                    <ion-icon name="book"></ion-icon>
+                  <ion-icon name="server-outline"></ion-icon>
                     <p>0 <br> Complaints</p>
                 </ion-card>
             </a>
@@ -60,7 +56,7 @@
         <ion-col>
           <a>
             <ion-card routerLink="/users/apps/pending">
-                <ion-icon name="home"></ion-icon>
+              <ion-icon name="speedometer-outline"></ion-icon>
                 <p>2 Pending Complaints</p>
             </ion-card>
         </a>
@@ -69,8 +65,8 @@
     <ion-row>
         <ion-col>
           <a>
-            <ion-card>
-                <ion-icon name="home"></ion-icon>
+            <ion-card routerLink="/users/apps/complaint-history">
+              <ion-icon name="radio-outline"></ion-icon>
                 <p>1 Closed Complaints</p>
             </ion-card>
         </a>

@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Add System Users
+      </ion-title>
+      <!-- <ion-buttons slot="end">
+        <ion-button  >
+          <ion-icon  name="person"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+   
+  
+  
+    <form [formGroup]="userForm" (submit)="create()">
+      <ion-list>
+        <ion-item class="input">
+          <ion-label position="stacked" color="primary">First Name</ion-label>
+          <ion-input formControlName="firstName" type="text" >
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('firstName')">
+            First Name is required
+          </p>
+        </ion-text>
+        <ion-item class="input">
+            <ion-label position="stacked" color="primary">Last Name</ion-label>
+            <ion-input formControlName="lastName" type="text" >
+            </ion-input>
+          </ion-item>
+    
+          <ion-text color="danger">
+            <p  class="error" *ngIf="isFieldValid('lastName')">
+              Last Name is required
+            </p>
+          </ion-text>
+        <ion-item class="input">
+          <ion-label position="stacked" color="primary">Email</ion-label>
+          <ion-input formControlName="email" type="text" >
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('email')">
+            Email is required
+          </p>
+        </ion-text>
+        <ion-item class="input">
+          <ion-label position="stacked" color="primary">Phone Number</ion-label>
+          <ion-input formControlName="phoneNumber" type="text" >
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('phoneNumber')">
+            Phone Number is required
+          </p>
+        </ion-text>
+
+        <ion-item class="input">
+            <ion-label position="stacked" color="primary">Department</ion-label>
+            <ion-input formControlName="department" type="text" >
+            </ion-input>
+          </ion-item>
+    
+          <ion-text color="danger">
+            <p  class="error" *ngIf="isFieldValid('department')">
+              Department is required
+            </p>
+          </ion-text>
+  
+        <ion-item class="input">
+          <ion-label position="stacked" color="primary">Password</ion-label>
+          <ion-input formControlName="password" type="password" >
+          </ion-input>
+        </ion-item>
+  
+        <ion-text color="danger">
+          <p  class="error" *ngIf="isFieldValid('password')">
+            Password is required
+          </p>
+        </ion-text>
+      </ion-list>
+     
+      <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button  type="submit" expand="block" shape="round">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </form>
+  
+  </ion-content>
+  

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { Location } from '@angular/common';
 import { AlertController, ToastController } from '@ionic/angular';
 
 
@@ -15,7 +15,8 @@ export class SupportPage {
 
   constructor(
     public alertCtrl: AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private location: Location
   ) { }
 
   async ionViewDidEnter() {
@@ -24,6 +25,9 @@ export class SupportPage {
       duration: 3000
     });
     await toast.present();
+  }
+  goBack() {
+    this.location.back()
   }
 
   async submit(form: NgForm) {
@@ -41,25 +45,5 @@ export class SupportPage {
     }
   }
 
-  // If the user enters text in the support question and then navigates
-  // without submitting first, ask if they meant to leave the page
-  // async ionViewCanLeave(): Promise<boolean> {
-  //   // If the support message is empty we should just navigate
-  //   if (!this.supportMessage || this.supportMessage.trim().length === 0) {
-  //     return true;
-  //   }
 
-  //   return new Promise((resolve: any, reject: any) => {
-  //     const alert = await this.alertCtrl.create({
-  //       title: 'Leave this page?',
-  //       message: 'Are you sure you want to leave this page? Your support message will not be submitted.',
-  //       buttons: [
-  //         { text: 'Stay', handler: reject },
-  //         { text: 'Leave', role: 'cancel', handler: resolve }
-  //       ]
-  //     });
-
-  //     await alert.present();
-  //   });
-  // }
 }

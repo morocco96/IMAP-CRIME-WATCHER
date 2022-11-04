@@ -28,33 +28,33 @@ export class ComplantHistoryComponent implements OnInit {
 
   
 
-async presentActionSheet() {
-  const actionSheet = await this.actionSheetCtrl.create({
-    
-      buttons: [
-        {
-          text: 'Contact us',
-          role: 'destructive',
-          icon: 'home',
-          handler: () => {
-            console.log('Destructive clicked');
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      
+        buttons: [
+          {
+            text: 'Contact us',
+            role: 'destructive',
+            icon: 'people-outline',
+            handler: () => {
+              console.log('Destructive clicked');
+            }
+          },{
+            text: 'Terms & Conditions',
+            icon: 'bulb-outline',
+            handler: () => {
+              console.log('Archive clicked');
+            }
+          },{
+            text: 'Logout',
+            icon: 'power-outline',
+            handler: () => {
+              this.router.navigate(['/login'])
+            }
           }
-        },{
-          text: 'Terms & Conditions',
-          icon: 'home',
-          handler: () => {
-            console.log('Archive clicked');
-          }
-        },{
-          text: 'Logout',
-          icon: 'home',
-          handler: () => {
-            this.router.navigate(['/login'])
-          }
-        }
-      ]
-    });
-   await actionSheet.present();
-  }
+        ]
+      });
+     await actionSheet.present();
+    }
 
 }

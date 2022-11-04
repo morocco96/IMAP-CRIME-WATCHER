@@ -1,31 +1,32 @@
-<ion-header>
+<ion-header [translucent]="true">
     <ion-toolbar color="primary">
-      <ion-buttons slot="start" >
-        <ion-menu-button color="light"></ion-menu-button>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
-  
-      <ion-title>Manage Users</ion-title>
+      <ion-title>
+        Manage User
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button  >
+          <!-- <ion-icon  name="person"></ion-icon> -->
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-  
-  <ion-content padding>
-    
-        <ion-card *ngFor="let user of users">
-      <ion-item button >
-        <ion-avatar slot="start">
-          <img [src]="user.img">
-        </ion-avatar>
-      
-        <ion-label>
-          <b>{{user.name}}</b>
-          <p>{{user.email}}</p>
-        </ion-label>
-        <ion-label slot="end">
-          <p style="text-align:right;">{{user.time}}</p>
-        </ion-label>
-      </ion-item>
+
+  <ion-content>
+
+    <ion-card *ngFor="let user of users" routerLink="/admin/apps/manage-user-detail/{{user.id}}">
+            <ion-item>
+                <ion-avatar slot="start">
+                  <img alt="Silhouette of a person's head"[src]="user.img" />
+                </ion-avatar>
+                <ion-label>
+                  <b>{{user.name}}</b> <br>
+                  {{user.email}}
+                </ion-label>
+               
+              </ion-item>
+        
     </ion-card>
-     
   </ion-content>
-  

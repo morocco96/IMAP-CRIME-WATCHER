@@ -2,15 +2,31 @@
     <ion-header class="ion-no-border">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+            <ion-button (click)="goBack()">
+                <ion-icon name="arrow-back-outline"  ></ion-icon>
+               </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-          <ion-button >
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-button>
-        </ion-buttons>
+            <ion-button id="popover-button">
+              <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            </ion-button>
+            <ion-button (click)="deleteReport()">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
       </ion-toolbar>
     </ion-header>
+
+    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item (click)="openModal()" [button]="true" [detail]="false">Take Action</ion-item>
+              <ion-item (click)="openUserModal()" [button]="true" [detail]="false">View User</ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
   
     <div class="about-header">
   

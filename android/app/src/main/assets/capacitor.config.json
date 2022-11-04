@@ -1,0 +1,6 @@
+{
+	"appId": "imap.crime.watcher",
+	"appName": "IMAP-Crime-Watcher",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -16,17 +16,22 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren:() => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      {
-        path:'system-users',
-        loadChildren:() => import('../system-users/system-users.module').then(m =>m.SystemUsersModule)
-      },
+     
       {
         path: 'complaints',
         loadChildren:() => import('../complaints/complaints.module').then(m =>m.ComplaintsModule)
       },
       {
+        path: 'add-user',
+        loadChildren:() => import('../add-users/add-users.module').then(m => m.AddUsersModule)
+      },
+      {
         path:'manage-user',
         loadChildren:() => import('../manage-users/manage-users.module').then(m => m.ManageUsersModule)
+      },
+      {
+        path: 'manage-user-detail/:id',
+        loadChildren:() => import('../manage-users-detail/manage-users-detail.module').then(m => m.ManageUsersDetailModule)
       },
       {
         path: 'pending-complaint',
@@ -39,6 +44,10 @@ const routes: Routes = [
       {
         path: 'pending-detail/:id',
         loadChildren:() => import ('../pending-complaint-detail/pending-complaint-detail.module').then(m =>m.PendingComplaintDetailModule)
+      },
+      {
+        path:'closed-detail/:id',
+        loadChildren:() => import('../closed-complaint-detail/closed-complaint-detail.module').then(m => m.ClosedComplaintDetailModule)
       }
     ]
   }

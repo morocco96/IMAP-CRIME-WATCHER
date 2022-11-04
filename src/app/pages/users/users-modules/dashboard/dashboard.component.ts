@@ -68,19 +68,19 @@ export class DashboardComponent implements OnInit {
         {
           text: 'Contact us',
           role: 'destructive',
-          icon: 'home',
+          icon: 'people-outline',
           handler: () => {
             console.log('Destructive clicked');
           }
         },{
           text: 'Terms & Conditions',
-          icon: 'home',
+          icon: 'bulb-outline',
           handler: () => {
             console.log('Archive clicked');
           }
         },{
           text: 'Logout',
-          icon: 'home',
+          icon: 'power-outline',
           handler: () => {
             this.router.navigate(['/login'])
           }

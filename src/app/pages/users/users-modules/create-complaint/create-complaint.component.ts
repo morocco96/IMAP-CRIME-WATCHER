@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DataService } from '../../../services/data.service';
 import { Report } from '../../../../models';
-import { ThisReceiver } from '@angular/compiler';
+import { Camera, CameraResultType } from '@capacitor/camera';
+
 
 @Component({
   selector: 'app-create-complaint',
@@ -23,21 +24,33 @@ export class CreateComplaintComponent implements OnInit {
 
       this.reportForm = this.fb.group({
         title: ['', Validators.required],
-        dateCreated: ['', Validators.required],
         complaintType: ['', Validators.required],
         complaintDetail: ['', Validators.required],
         location: ['', Validators.required],
-        status: ['', Validators.required]
+
       })
      }
 
     ngOnInit(): void {
       
     }
-
     selectOptions = {
+      header: 'Complaint Type'
+    };
+    selectLocation = {
       header: 'Select a Location'
     };
+
+    async takePicture() {
+      const image = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+      });
+    
+      // Here you get the image as result.
+      const theActualPicture = image.dataUrl;
+    }
     
     createReport() {
     if(this.reportForm.valid) {
@@ -75,34 +88,55 @@ export class CreateComplaintComponent implements OnInit {
     
     }
 
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetCtrl.create({
-      
-        buttons: [
-          {
-            text: 'Contact us',
-            role: 'destructive',
-            icon: 'home',
-            handler: () => {
-              console.log('Destructive clicked');
+    async presentActionSheet() {
+      const actionSheet = await this.actionSheetCtrl.create({
+        
+          buttons: [
+            {
+              text: 'Contact us',
+              role: 'destructive',
+              icon: 'people-outline',
+              handler: () => {
+                console.log('Destructive clicked');
+              }
+            },{
+              text: 'Terms & Conditions',
+              icon: 'bulb-outline',
+              handler: () => {
+                console.log('Archive clicked');
+              }
+            },{
+              text: 'Logout',
+              icon: 'power-outline',
+              handler: () => {
+                this.router.navigate(['/login'])
+              }
             }
-          },{
-            text: 'Terms & Conditions',
-            icon: 'home',
-            handler: () => {
-              console.log('Archive clicked');
-            }
-          },{
-            text: 'Logout',
-            icon: 'home',
-            handler: () => {
-              this.router.navigate(['/login'])
-            }
-          }
-        ]
-      });
-     await actionSheet.present();
-    }
+          ]
+        });
+       await actionSheet.present();
+      }
+
+
+    complaintType:Array<any> = [
+      "Crime in Progress",
+      'Disruptive Behavior',
+      'Drug Use',
+      'Human Trafficking',
+      'Robbery/ Theft',
+      'Sexual Assualt',
+      'Suspicious Activity',
+      'Vandalism',
+      'Shoplifting',
+      'Resident Burglary'
+    ]
+
+    location:Array<any> = [
+     'Transformer Street',
+     'Hillcon Street',
+     'IMAP Gate',
+     'Delta Prospect Street'
+    ]
 }
 
 

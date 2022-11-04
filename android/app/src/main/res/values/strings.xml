@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IMAP-Crime-Watcher</string>
+    <string name="title_activity_main">IMAP-Crime-Watcher</string>
+    <string name="package_name">imap.crime.watcher</string>
+    <string name="custom_url_scheme">imap.crime.watcher</string>
+</resources>

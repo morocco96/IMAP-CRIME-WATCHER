@@ -8,7 +8,7 @@
       </ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="presentActionSheet()">
-          <ion-icon slot="icon-only" ios="menu" md="menu" class="menu" style="color:#fff;"></ion-icon>
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
@@ -17,11 +17,27 @@
   <ion-content>
     <form  [formGroup]="reportForm" (ngSubmit)="createReport()">
       <ion-list>
+        <!-- <ion-item>
+          <ion-button (click)="takePicture()" color="primary" shape="round" class="picture">
+            <ion-avatar>
+              <img src="/assets/IMAP-images/camera.jpg" alt="">
+            </ion-avatar>
+          </ion-button>
+        </ion-item> -->
+        <ion-item>
+         
+          <div  class="camera" >
+            <img src="/assets/IMAP-images/camera1.png" alt=""  (click)="takePicture()">
+            <h4 style="margin-top:0;">Click to Take a Picture</h4>
+          </div>
+     
+        </ion-item>
         <ion-item class="input">
          
           <ion-input type="text" placeholder="Title" formControlName="title">
           </ion-input>
         </ion-item>
+        
   
         <ion-text color="danger">
           <p  class="error" *ngIf="isFieldValid('title')">
@@ -30,30 +46,12 @@
         </ion-text>
        
 
-        <ion-item class="input">
-         
-            <ion-input type="date" placeholder="Date" >
-            </ion-input>
-          </ion-item>
-         
-
-        <ion-text color="danger">
-          <p  class="error" *ngIf="isFieldValid('dateCreated')">
-            Date is required
-          </p>
-        </ion-text>
-
-        <!-- <ion-item class="input">
-         
-            <ion-input type="text" placeholder="Complaint Type" >
-            </ion-input>
-          </ion-item> -->
           <ion-item>
-            <ion-select placeholder="Complaint Type" formControlName="complaintType">
-              <ion-select-option value=""></ion-select-option>
-              <ion-select-option value="kid">Kidnapping</ion-select-option>
-              <ion-select-option value="police">Police Crime</ion-select-option>
-              <ion-select-option value="police">Police Crime</ion-select-option>
+            <ion-select placeholder="Complaint Type" [interfaceOptions]="selectOptions" formControlName="complaintType">
+              <ion-select-option *ngFor="let item of complaintType" [value]="item">
+                {{item}}
+              </ion-select-option>
+             
             </ion-select>
           </ion-item>
 
@@ -75,10 +73,19 @@
           </p>
         </ion-text>
   
-        <ion-item class="input" style="padding-top:1rem;">
+        <!-- <ion-item class="input" style="padding-top:1rem;">
       
-          <ion-input  type="text"  placeholder="Select Loaction" formControlName="location">
+          <ion-input  type="text"  placeholder="Select Loaction" >
           </ion-input>
+        </ion-item> -->
+        
+        <ion-item>
+          <ion-select placeholder="Complaint Type" formControlName="location" [interfaceOptions]="selectLocation">
+            <ion-select-option *ngFor="let item of location" [value]="item">
+              {{item}}
+            </ion-select-option>
+           
+          </ion-select>
         </ion-item>
   
         <ion-text color="danger">
@@ -87,12 +94,8 @@
           </p>
         </ion-text>
   
-        <ion-item>
-          <ion-icon name="home" slot="start"></ion-icon>
-          Report anonymous
-          <!-- <ion-icon name="home" slot="end"></ion-icon> -->
-        </ion-item>
-  
+       
+<!--   
         <ion-item class="input">
       
           <ion-input  type="text"  placeholder="Crime Status" formControlName="status">
@@ -103,7 +106,7 @@
           <p  class="error" *ngIf="isFieldValid('status')">
             Crime Status is required
           </p>
-        </ion-text>
+        </ion-text> -->
   
   
   

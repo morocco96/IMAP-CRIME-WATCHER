@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
     },
     {
       title: 'Add Users',
-      url: '/admin/apps/system-users',
+      url: '/admin/apps/add-user',
       icon: 'people'
     },
     {
@@ -38,12 +38,12 @@ export class AdminComponent implements OnInit {
     {
       title: 'Pending Complaints',
       url: '/admin/apps/pending-complaint',
-      icon: 'map'
+      icon: 'speedometer'
     },
     {
       title: 'Closed Complaints',
       url: '/admin/apps/closed-complaint',
-      icon: 'map'
+      icon: 'radio'
     }
   
   ];

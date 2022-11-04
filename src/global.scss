@@ -81,9 +81,13 @@ color:#fff;
 }
 
 // .alert-head.sc-ion-alert-md {
-//   background:url(/assets/IMAP-images/police-light.svg) center/30% no-repeat;
+ 
 //   min-height:5rem;
+//   color:green!important;
 // }
+.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+ 
+}
 
 .alert-message.sc-ion-alert-md {
   text-align:center;
@@ -138,4 +142,32 @@ color: #309CFF;
 }
 .about-info {
   width:100%!important;
+}
+
+
+ion-modal {
+  --height: 40%;
+  --width:90%;
+  margin:auto;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(0, 102, 255, 0.973);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(125, 22, 209);
+  --color: white;
+}
+
+ion-modal.stack-modal {
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0.32);
+}
+
+#ion-footer {
+  border-radius:20px;
 }
