@@ -16,13 +16,13 @@
 
   <ion-content>
 
-    <ion-card *ngFor="let user of users" routerLink="/admin/apps/manage-user-detail/{{user.id}}">
+    <ion-card *ngFor="let user of users" (click)="userDetail(user)">
             <ion-item>
-                <ion-avatar slot="start">
+                <!-- <ion-avatar slot="start">
                   <img alt="Silhouette of a person's head"[src]="user.img" />
-                </ion-avatar>
+                </ion-avatar> -->
                 <ion-label>
-                  <b>{{user.name}}</b> <br>
+                  <b>{{user.fullName}}</b> <br>
                   {{user.email}}
                 </ion-label>
                

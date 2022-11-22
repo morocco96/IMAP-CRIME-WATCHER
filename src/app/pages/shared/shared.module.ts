@@ -23,7 +23,11 @@ import { ForwardComponent } from './components/forward/forward.component';
   exports: [
     ActionModalComponent,
     ViewUserModalComponent,
-    ForwardComponent
+    ForwardComponent,
+    CommonModule,
+    IonicModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
