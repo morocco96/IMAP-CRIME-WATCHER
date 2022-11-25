@@ -3,8 +3,6 @@ import { ActionSheetController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { CompliantService } from '../../../services';
-import { Report } from '../../../../models';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { LoadingService } from '../../../../shared/service/loader';
 import {AppFilter  } from "../../../../shared";
 import { ToastService } from '../../../../shared/service/toast';
@@ -26,8 +24,10 @@ export class ComplantHistoryComponent  {
     private complaintSvc:CompliantService,
     private dataService: DataService,
     private route: ActivatedRoute) {
+      this.status=route.snapshot.queryParams["status"]
       this.filters = new AppFilter({ sidx: '-createdat', rows: 2000, sord: 'des' });
-      console.log("in compliant")
+      let filter = this.filterComposer("");
+      this.filters.filters = JSON.stringify(filter);
       this.getPage(1)
     }
 
@@ -38,13 +38,17 @@ export class ComplantHistoryComponent  {
     this.complaintSvc.getReports({ param: this.filters }).subscribe(
 			(res) => {
 				this.loaderSvc.dismiss();
-        this.datas=res.reports
+        this.datas=res.cases
 			},
 			(error) => {
 				this.loaderSvc.dismiss();
 			}
 		);
 	}
+  reportDetail(report){
+    this.complaintSvc.reportDetail=report;
+    this.router.navigate([`/users/apps/complaint-detail/${report.id}`], { replaceUrl: true })
+  }
 
   filterComposer(query) {
 		let mongofilter: { [id: string]: any } = {};

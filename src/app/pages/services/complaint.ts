@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class CompliantService {
     baseUrl = environment.baseUrl
+    reportDetail={}
     constructor(private _http: HttpClient) { }
 
     createupdateProfile(payload): Observable<any> {
@@ -21,6 +22,9 @@ export class CompliantService {
 
     create(payload): Observable<any> {
         return this._http.post(`${this.baseUrl}/v1/case`, payload.body);
+    }
+    delete(payload): Observable<any> {
+        return this._http.delete(`${this.baseUrl}/v1/case/${payload.id}`);
     }
 
     getReports(payload): Observable<any> {

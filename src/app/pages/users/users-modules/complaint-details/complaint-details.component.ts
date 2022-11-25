@@ -3,7 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { Location } from '@angular/common';
 import { AlertController } from '@ionic/angular';
-
+import { CompliantService } from '../../../services';
+import { LoadingService } from '../../../../shared/service/loader';
+import {AppFilter  } from "../../../../shared";
+import { ToastService } from '../../../../shared/service/toast';
 
 @Component({
   selector: 'app-complaint-details',
@@ -15,10 +18,12 @@ export class ComplaintDetailsComponent implements OnInit {
   id:any;
   report:any;
   constructor(private route:ActivatedRoute,
+    private loaderSvc:LoadingService,
               private router: Router,
-              private dataService: DataService,
+              private toastSvc:ToastService,
+              private compliantSvc: CompliantService,
               private location: Location,
-              private alertCtrl: AlertController) { }
+              private alertCtrl: AlertController,) { }
 
   ngOnInit(): void {
    this.route.paramMap.subscribe(params=> {
@@ -28,14 +33,12 @@ export class ComplaintDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    // this.location.back();
+    this.router.navigate(["/users/apps/complaint-history"])
   }
 
   getReport(id:any) {
-   this.dataService.getReport(id).subscribe(res => {
-     this.report = res
-    console.log(res)
-   })
+   this.report=this.compliantSvc.reportDetail
   }
 
     
@@ -55,7 +58,18 @@ export class ComplaintDetailsComponent implements OnInit {
           text: 'Yes',
           role: 'confirm',
           handler: () => {
-            console.log('Confirm')
+            this.loaderSvc.present('Please wait...');
+            this.compliantSvc.delete({id:this.report.id}).subscribe(res=>{
+              this.loaderSvc.dismiss();
+              this.toastSvc.presentToast('Reported deleted successfully', 'success');
+              setTimeout(()=>{
+                this.router.navigate(["/users/apps/complaint-history"])
+              },2000)
+            },error=>{
+              this.loaderSvc.dismiss();
+             
+              this.toastSvc.presentToast('Failed to get users', 'danger');
+            })
           },
         },
       ],

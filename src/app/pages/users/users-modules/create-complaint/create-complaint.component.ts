@@ -3,8 +3,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { CompliantService } from '../../../services';
-import { Report } from '../../../../models';
+import { CompliantService,UserService } from '../../../services';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { LoadingService } from '../../../../shared/service/loader';
 import { ToastService } from '../../../../shared/service/toast';
@@ -17,7 +16,9 @@ import { ToastService } from '../../../../shared/service/toast';
 export class CreateComplaintComponent implements OnInit {
   theActualPicture
   reportForm: FormGroup;
+  user
   constructor(private router: Router,
+    private userSvc:UserService,
     private loaderSvc:LoadingService,
     public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,
@@ -30,8 +31,16 @@ export class CreateComplaintComponent implements OnInit {
       complaintType: ['', Validators.required],
       complaintDetail: ['', Validators.required],
       location: ['', Validators.required],
-      status: ['Open', Validators.required],
+      reporter: [''],
+      status: ['Pending', Validators.required],
 
+    })
+    this.userSvc.user$.subscribe(usr=>{
+      this.user =usr
+      console.log(usr)
+      if(this.user){
+        this.reportForm.get("reporter").patchValue(this.user.id)
+      }
     })
   }
 

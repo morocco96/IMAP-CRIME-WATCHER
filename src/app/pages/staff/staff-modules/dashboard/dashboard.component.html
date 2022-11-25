@@ -21,17 +21,17 @@
     <ion-row>
         <ion-col>
             <a>
-                <ion-card routerLink="/staff/apps/pending-complaint">
+                <ion-card replaceUrl="true" routerLink="/staff/apps/pending-complaint" [queryParams]="{ status: 'Closed'}">
                     <ion-icon name="server-outline"></ion-icon>
-                    <p>0 <br> Complaints</p>
+                    <p>{{counts | dashboard:'Closed'}}  Complaints</p>
                 </ion-card>
             </a>
         </ion-col>
         <ion-col>
             <a>
-                <ion-card routerLink="/staff/apps/pending-complaint">
+                <ion-card replaceUrl="true" routerLink="/staff/apps/pending-complaint" [queryParams]="{ status: 'Opened'}">
                     <ion-icon name="ribbon-outline"></ion-icon>
-                    <p>1 New Complaint</p>
+                    <p>{{counts | dashboard:'Opened' }} New Complaint</p>
                 </ion-card>
             </a>
         </ion-col>
@@ -39,9 +39,9 @@
     <ion-row>
         <ion-col>
             <a>
-                <ion-card routerLink="/staff/apps/pending-complaint">
+                <ion-card replaceUrl="true" routerLink="/staff/apps/pending-complaint" [queryParams]="{ status: 'Pending'}"> 
                     <ion-icon name="speedometer-outline"></ion-icon>
-                    <p>2 Pending Complaints</p>
+                    <p>{{counts | dashboard:'Pending' }} Pending Complaints</p>
                 </ion-card>
             </a>
         </ion-col>

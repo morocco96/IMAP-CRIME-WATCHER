@@ -34,7 +34,7 @@
       </ion-card-content>
     </ion-card> -->
     <ion-card   *ngFor="let report of datas">
-      <ion-card-content routerLink="/users/apps/complaint-detail/{{report.id}}">
+      <ion-card-content  (click)="reportDetail(report)">
         <ion-list lines="none">
           <ion-item>
        

@@ -18,7 +18,7 @@ export class UserService {
     setUser(sub) {
         this.jwt$.next(sub["token"])
         this.isLogin$.next(true)
-        this.user.next(sub);
+        this.user.next(sub["user"]);
     }
     create(payload): Observable<any> {
         return this._http.post(`${this.baseUrl}/v1/users`, payload.body);
