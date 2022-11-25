@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import {  Route } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { Location } from '@angular/common'
 import { ModalController } from '@ionic/angular';
 import { ActionModalComponent, ViewUserModalComponent, ForwardComponent } from '../../../shared';
 import { AlertController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CompliantService } from '../../../services';
+import { LoadingService } from '../../../../shared/service/loader';
+import {AppFilter  } from "../../../../shared";
+import { ToastService } from '../../../../shared/service/toast';
+
 
 @Component({
   selector: 'app-pending-complaint-detail',
@@ -16,19 +22,29 @@ export class PendingComplaintDetailComponent implements OnInit {
   report:any;
   id:any;
  
-  constructor(private route:ActivatedRoute,
+  constructor(
+    private loaderSvc:LoadingService,
+              private route:ActivatedRoute,
               private dataService: DataService,
               private location: Location,
               private modalCtrl: ModalController,
-              private alertCtrl: AlertController
+              private alertCtrl: AlertController,
+              private router: Router,
+              private toastSvc:ToastService,
+              private compliantSvc: CompliantService,
          ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getadminDetail();
+
   }
+
   goBack() {
-    this.location.back()
+    // this.location.back();
+    this.router.navigate(["/users/apps/complaint-history"])
+  }
+
+  getReport(id:any) {
+   this.report=this.compliantSvc.reportDetail
   }
 
   async openModal() {
@@ -80,7 +96,18 @@ export class PendingComplaintDetailComponent implements OnInit {
           text: 'Yes',
           role: 'confirm',
           handler: () => {
-            console.log('Confirm')
+            this.loaderSvc.present('Please wait...');
+            this.compliantSvc.delete({id:this.report.id}).subscribe(res=>{
+              this.loaderSvc.dismiss();
+              this.toastSvc.presentToast('Reported deleted successfully', 'success');
+              setTimeout(()=>{
+                this.router.navigate(["/admin/apps/pending-complaint"])
+              },2000)
+            },error=>{
+              this.loaderSvc.dismiss();
+             
+              this.toastSvc.presentToast('Failed to get users', 'danger');
+            })
           },
         },
       ],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { UserService } from '../services';
 
 
 
@@ -14,7 +15,7 @@ import { DataService } from '../services/data.service';
 export class UsersComponent implements OnInit {
 
   dark:boolean = false;
-
+user
   setMode() {
     this.dark = !this.dark;
     console.log(this.dark)
@@ -43,9 +44,12 @@ export class UsersComponent implements OnInit {
 
 
 
-  
+
   constructor(private router: Router,
-              private dataService:DataService) {}
+    private userSvc:UserService,
+              private dataService:DataService) {
+                this.user=userSvc.userDetail
+              }
 
   ngOnInit(){
    this.setDarkMode()

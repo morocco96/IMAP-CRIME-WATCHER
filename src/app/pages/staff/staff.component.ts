@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { UserService } from '../services';
 
 @Component({
   selector: 'app-staff',
@@ -8,15 +9,19 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
- 
-  dark:boolean = false;
 
+  dark: boolean = false;
+  user
   setMode() {
     this.dark = !this.dark;
     console.log(this.dark)
   }
-  constructor(private dataService:DataService,
-              private router:Router) { }
+  constructor(
+    private router: Router,
+    private userSvc: UserService,
+    private dataService: DataService) {
+    this.user = userSvc.userDetail
+  }
 
   ngOnInit(): void {
     this.setDarkMode()
@@ -40,7 +45,7 @@ export class StaffComponent implements OnInit {
       url: '/staff/apps/closed-complaint',
       icon: 'map'
     }
-  
+
   ];
 
 

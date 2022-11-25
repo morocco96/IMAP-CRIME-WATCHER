@@ -16,12 +16,12 @@
   
   <ion-content padding>
     <ion-card  *ngFor="let report of reports">
-        <ion-card-content routerLink="/admin/apps/closed-detail/{{report.id}}">
+        <ion-card-content replaceUrl="true" (click)="reportDetail(report)">
           <ion-list lines="none">
             <ion-item>
          
              <div>
-              <h2>{{report.name}}</h2>
+              <h2>{{report.reporter.fullName}}</h2>
               
               <p>{{report.title}}</p>
              </div>
