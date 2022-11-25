@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from "../../../services"
+import { LoadingService } from '../../../../shared/service/loader';
+import { ToastService } from '../../../../shared/service/toast';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -8,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
   userForm: FormGroup
-  constructor(private fb: FormBuilder,
+  constructor(
+    private toastSvc: ToastService,
+              private userSvc: UserService,
+              private loaderSvc: LoadingService,
+              private fb: FormBuilder,
               private router:Router) {
 
     this.userForm = this.fb.group({
@@ -17,19 +24,34 @@ export class AddUserComponent implements OnInit {
       email: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       department: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      role: ['STAFF', Validators.required]
     })
    }
 
   ngOnInit(): void {
   }
-
+error
   create() {
     if(this.userForm.valid) {
-      console.log(this.userForm.value)
-      this.router.navigate(['/admin/apps/manage-user'])
+     let data=this.userForm.value;
+      data["fullName"]=`${data["firstName"]} ${data["lastName"]}`
+      this.loaderSvc.present('Please wait...');
+      this.userSvc.create({ body: this.userForm.value }).subscribe(res => {
+        this.loaderSvc.dismiss();
+        this.toastSvc.presentToast('User added successfully', 'success');
+        setTimeout(()=>{
+          this.router.navigate(['/admin/apps/manage-user'])
+        },2000)
+      
+      }, error => {
+        this.loaderSvc.dismiss();
+        this.error = true
+      })
     }
-  }
+    
+    }
+  
   
   isFieldValid(field: string) {
     return(

@@ -4,13 +4,14 @@ import { ActionModalComponent, ViewUserModalComponent } from './components';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForwardComponent } from './components/forward/forward.component';
-
+import { DashboardPipe } from "./pipes/dashboard";
 
 @NgModule({
   declarations: [
     ActionModalComponent,
     ViewUserModalComponent,
-    ForwardComponent
+    ForwardComponent,
+    DashboardPipe
   
   ],
   imports: [
@@ -23,7 +24,12 @@ import { ForwardComponent } from './components/forward/forward.component';
   exports: [
     ActionModalComponent,
     ViewUserModalComponent,
-    ForwardComponent
+    ForwardComponent,
+    CommonModule,
+    IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DashboardPipe
   ]
 })
 export class SharedModule { }

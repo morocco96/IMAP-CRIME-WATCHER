@@ -5,7 +5,9 @@ import { Location } from '@angular/common'
 import { ModalController } from '@ionic/angular';
 import { ActionModalComponent, ViewUserModalComponent } from '../../../shared';
 import { AlertController } from '@ionic/angular';
-
+import { UserService } from "../../../services"
+import { LoadingService } from '../../../../shared/service/loader';
+import { ToastService } from '../../../../shared/service/toast';
 @Component({
   selector: 'app-manage-users-detail',
   templateUrl: './manage-users-detail.component.html',
@@ -14,17 +16,20 @@ import { AlertController } from '@ionic/angular';
 export class ManageUsersDetailComponent implements OnInit {
 user:any;
 id:any;
-  constructor(private route:ActivatedRoute,
+  constructor(
+    private userSvc:UserService,
+    private route:ActivatedRoute,
     private dataService: DataService,
     private location: Location,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController) { }
 
   ngOnInit(): void {
+    this.user=this.userSvc.userDetail
     this.id = this.route.snapshot.paramMap.get('id');
-    this.dataService.getUserDetail(this.id).subscribe(res => {
-      this.user = res
-    })
+    // this.dataService.getUserDetail(this.id).subscribe(res => {
+    //   this.user = res
+    // })
   }
 
   goBack() {
@@ -47,6 +52,9 @@ id:any;
           text: 'Yes',
           role: 'confirm',
           handler: () => {
+            this.userSvc.delete({id:this.user.id}).subscribe(res=>{
+              
+            })
             console.log('Confirm')
           },
         },

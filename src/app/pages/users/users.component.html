@@ -9,7 +9,7 @@
             <img src="/assets/IMAP-images/head-logo.svg" alt="">
            </ion-list-header>
            <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
-             <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+             <ion-item replaceUrl="true"  [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
                <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
                <ion-label >
                  {{p.title}}
@@ -23,7 +23,7 @@
            <ion-list-header>
              Account
            </ion-list-header>
-           <ion-menu-toggle autoHide="false">
+           <ion-menu-toggle autoHide="false" *ngIf="!user">
             <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
               <ion-icon slot="start" name="log-in"></ion-icon>
               <ion-label>
@@ -41,7 +41,7 @@
             </ion-item>
           </ion-menu-toggle>
 
-          <ion-menu-toggle autoHide="false">
+          <ion-menu-toggle autoHide="false" *ngIf="!user">
             <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
               <ion-icon slot="start" name="person-add"></ion-icon>
               <ion-label>
