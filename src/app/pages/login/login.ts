@@ -38,7 +38,7 @@ export class LoginPage {
       this.userSvc.login({ body: this.loginForm.value }).subscribe(res => {
         this.loaderSvc.dismiss();
         this.userSvc.setUser(res);
-        if (res["role"] == "USER") {
+        if (res["role"] == "USER") { 
           this.router.navigate(['/users'], { replaceUrl: true })
 
         } else if (res["role"] == "ADMIN") {

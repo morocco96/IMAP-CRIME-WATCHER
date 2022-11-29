@@ -5,8 +5,9 @@
      <ion-menu contentId="main-content">
        <ion-content>
          <ion-list lines="none">
-           <ion-list-header>
-            <img src="/assets/IMAP-images/head-logo.svg" alt="">
+          <ion-list-header style="color:#309CFF; font-weight:900;">
+            <img src="assets\IMAP-images\imap.png"  style="width:50px" alt="">
+            IMAP CRIME WATCHER
            </ion-list-header>
            <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
              <ion-item [routerLink]="p.url" replaceUrl="true" routerLinkActive="selected" routerDirection="root" detail="false">
